@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "komar",
+    "password": "komarganteng",
+    "database": "wayshub",
+    "host": "103.127.134.76",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
