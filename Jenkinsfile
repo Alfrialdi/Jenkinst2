@@ -48,7 +48,7 @@ pipeline{
                             docker rm -f testcode
                             exit 1
                        fi 
-                       docker rm -f tescode
+                       docker rm -f testcode
                        echo "Selesai Testing!"
                        exit
                     EOF"""
@@ -89,7 +89,7 @@ pipeline{
 
          stage ('push notif to discord') {
             steps{
-                discordSend description: 'test desc', footer: '', image: '', link: '', result: 'SUCCESS', scmWebUrl: '', thumbnail: '', title: 'Discord Notif', webhookURL: 'https://discord.com/api/webhooks/1240153086937403503/69pvZz1C_FUnfKFmT8xn_J2cJzThsEdS5NKgR4ySdDChzzANgSShMttNsFzr5WSup84b'
+                discordSend description: 'Sukses Push', footer: '', image: '', link: '', result: 'SUCCESS', scmWebUrl: '', thumbnail: '', title: 'Discord Notif', webhookURL: 'https://discord.com/api/webhooks/1240153086937403503/69pvZz1C_FUnfKFmT8xn_J2cJzThsEdS5NKgR4ySdDChzzANgSShMttNsFzr5WSup84b'
             }
          }
    }
