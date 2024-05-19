@@ -89,7 +89,7 @@ pipeline{
 
          stage ('push notif to discord') {
             steps{
-                discordSend description: 'test desc', footer: '', image: '', link: '', result: 'SUCCESS', scmWebUrl: '', thumbnaik: '', title: 'Discord Notif', webhookURL: ''
+                discordSend description: 'test desc', footer: '', image: '', link: '', result: 'SUCCESS', scmWebUrl: '', thumbnail: '', title: 'Discord Notif', webhookURL: ''
             }
          }
    }
