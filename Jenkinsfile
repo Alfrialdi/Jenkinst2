@@ -35,7 +35,7 @@ pipeline{
            }
         }
 
-        stage ('test the code'){
+        stage ('Test the code'){
            steps{
               sshagent([secret]){
                     sh """ssh -o StrictHostKeyChecking=no ${server} << EOF
