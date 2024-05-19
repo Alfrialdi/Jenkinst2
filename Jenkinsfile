@@ -9,7 +9,7 @@ def dockerHubRepo = 'alfrialdi24/wayshub-backend'
 pipeline{
     agent any
     stages{
-        stage ('pull new code'){
+        stage ('Pull new code'){
            steps{
               sshagent([secret]){
                     sh """ssh -o StrictHostKeyChecking=no ${server} << EOF
