@@ -22,7 +22,7 @@ pipeline{
            }
         }
 
-        stage ('build the code'){
+        stage ('Build the code'){
            steps{
               sshagent([secret]){
                     sh """ssh -o StrictHostKeyChecking=no ${server} << EOF
