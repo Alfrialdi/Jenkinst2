@@ -6,7 +6,7 @@ def namebuild = 'wayshub-backend:1.0'
 def dockerHubCredentials = 'dockerHubT2'
 def dockerHubRepo = 'alfrialdi24/wayshub-backend'
 
-pipeline
+pipeline{
     agent any
     stages{
         stage ('pull new code'){
@@ -87,6 +87,10 @@ pipeline
             }
          }
 
-  
+         stage ('push notif to discord') {
+            steps{
+                discordSend description: 'test desc', footer: '', image: '':, link: '', result: 'SUCCESS', scmWebUrl: '', thumbnaik: '', title: 'Discord Notif', webhookURL: ''
+            }
          }
-
+   }
+}
