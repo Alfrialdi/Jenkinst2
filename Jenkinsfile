@@ -12,7 +12,7 @@ pipeline{
         stage ('pull new code'){
            steps{
               sshagent([secret]){
-                    sh """ssh -o StricHostKeyChecking=no ${server} << EOF
+                    sh """ssh -o StrictHostKeyChecking=no ${server} << EOF
                     cd ${directory}
                     git pull origin ${branch}
                     echo "Selesai Pulling!"
@@ -25,7 +25,7 @@ pipeline{
         stage ('build the code'){
            steps{
               sshagent([secret]){
-                    sh """ssh -o StricHostKeyChecking=no ${server} << EOF
+                    sh """ssh -o StrictHostKeyChecking=no ${server} << EOF
                     cd ${directory}
                     docker build -t {namebuild} .
                     echo "Selesai Building!"
@@ -38,7 +38,7 @@ pipeline{
         stage ('test the code'){
            steps{
               sshagent([secret]){
-                    sh """ssh -o StricHostKeyChecking=no ${server} << EOF
+                    sh """ssh -o StrictHostKeyChecking=no ${server} << EOF
                         cd ${directory}
                         docker run -d --name -testcode -p 5009:5000 ${namebuild}
                         if wget --spider -q --server-response http://127.0.0.1:5009/ 2>&1 | grep '404 Not Found'; then
@@ -59,7 +59,7 @@ pipeline{
         stage ('deploy'){
            steps{
               sshagent([secret]){
-                    sh """ssh -o StricHostKeyChecking=no ${server} << EOF
+                    sh """ssh -o StrictHostKeyChecking=no ${server} << EOF
                     cd ${directory}
                     docker compose down
                     docker compose up -d
@@ -74,7 +74,7 @@ pipeline{
            steps{
               withCredentials([usernamePassword(credentialsId: dockerHubCredentials, usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
                 sshagant ([secret]) {
-                    sh """ ssh -o StricHostKeyChecking=no ${server} << EOF
+                    sh """ ssh -o StrictHostKeyChecking=no ${server} << EOF
                     cd ${directory}
                     echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
                     docker tag ${namebuild} ${dockerHubRepo}:latest
@@ -89,7 +89,7 @@ pipeline{
 
          stage ('push notif to discord') {
             steps{
-                discordSend description: 'test desc', footer: '', image: '', link: '', result: 'SUCCESS', scmWebUrl: '', thumbnail: '', title: 'Discord Notif', webhookURL: ''
+                discordSend description: 'test desc', footer: '', image: '', link: '', result: 'SUCCESS', scmWebUrl: '', thumbnail: '', title: 'Discord Notif', webhookURL: 'https://discord.com/api/webhooks/1240153086937403503/69pvZz1C_FUnfKFmT8xn_J2cJzThsEdS5NKgR4ySdDChzzANgSShMttNsFzr5WSup84b'
             }
          }
    }
