@@ -1,6 +1,6 @@
 def secret = 'sshjenkinteam2'
 def server = 'team2@103.127.134.76'
-def directory = '/home/team2/wayshub-backend'
+def directory = '/home/team2/wayshub/wayshub-backend'
 def branch = 'master'
 def namebuild = 'wayshub-backend:1.0'
 def dockerHubCredentials = 'dockerHubT2'
