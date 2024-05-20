@@ -56,7 +56,7 @@ pipeline{
            }
         }
         
-        stage ('deploy'){
+        stage ('Deploy'){
            steps{
               sshagent([secret]){
                     sh """ssh -o StrictHostKeyChecking=no ${server} << EOF
